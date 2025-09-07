@@ -1,38 +1,23 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strlcpy.h                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/26 11:58:01 by stitrago          #+#    #+#             */
-/*   Updated: 2025/08/28 10:59:43 by stitrago         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "ft_strlen.h"
-
 #ifndef FT_STRLCPY_H
-# define FT_STRLCPY_H
+#define FT_STRLCPY_H
 
-int	strlcpy(char *dst, char *src, int size)
+#include <stdio.h>
+
+int ft_strlcpy(char *dst, const char * src, unsigned int dsize)
 {
-	int	len;
-	int	i;
+    int i;
 
-	len = ft_strlen(src);
-	if (size == 0)
-	{
-		return (len);
-	}
-	while (src[i] && i < size - 1)
-	{
-		dst[i] = src[i];
-		dst++;
-		i++;
-	}
-	dst[i] = '\0';
-	return (len);
+    i = 0;
+    while (src[i] && i < dsize - 1)
+    {
+        dst[i] = src[i];
+        i++;
+    }
+
+    dst[i] = '\0';
+
+    return (i);
+
 }
 
 #endif
