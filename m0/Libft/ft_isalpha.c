@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.h                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/28 18:03:41 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/07 09:16:22 by stitrago         ###   ########.fr       */
+/*   Created: 2025/08/26 08:54:15 by stitrago          #+#    #+#             */
+/*   Updated: 2025/09/08 11:29:25 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MEMMOVE_H
-# define FT_MEMMOVE_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-
-void	*ft_memmove(void *dest, const void *src, size_t n)
+size_t	ft_isalpha(size_t c)
 {
-	size_t			i;
-	const char		*psrc;
-	unsigned char	*pdest;
-	unsigned char	*temp;
-
-	psrc = (const char *)src;
-	pdest = (unsigned char *)dest;
-	i = 0;
-    
-	while (i < n)
+	if ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z')))
 	{
-		pdest[i] = temp[i];
-		i++;
+		return (1);
 	}
-	pdest[i] = '\0';
+	return (0);
 }
-
-#endif

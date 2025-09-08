@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.h                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/28 17:10:21 by stitrago          #+#    #+#             */
-/*   Updated: 2025/08/28 18:02:05 by stitrago         ###   ########.fr       */
+/*   Created: 2025/08/26 09:59:30 by stitrago          #+#    #+#             */
+/*   Updated: 2025/09/08 11:29:24 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MEMCPY_H
-# define FT_MEMCPY_H
+#include "libft.h"
 
-# include <unistd.h>
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+size_t	ft_isdigit(size_t c)
 {
-	size_t			i;
-	const char		*psrc;
-	unsigned char	*pdest;
-
-	psrc = (const char *)src;
-	pdest = (unsigned char *)dest;
-	i = 0;
-	while (i < n)
+	if (('0' <= c) && (c <= '9'))
 	{
-		pdest[i] = psrc[i];
-		i++;
+		return (1);
 	}
-	pdest[i] = '\0';
+	return (0);
 }
-#endif

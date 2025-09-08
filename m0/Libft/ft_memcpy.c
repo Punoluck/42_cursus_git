@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.h                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/26 08:54:15 by stitrago          #+#    #+#             */
-/*   Updated: 2025/08/26 10:26:09 by stitrago         ###   ########.fr       */
+/*   Created: 2025/08/28 17:10:21 by stitrago          #+#    #+#             */
+/*   Updated: 2025/09/08 11:29:21 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ISALPHA_H
-# define FT_ISALPHA_H
+#include "libft.h"
 
-int	ft_isalpha(int c)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z')))
+	size_t i;
+	const char *psrc;
+	unsigned char *pdest;
+
+	psrc = (const char *)src;
+	pdest = (unsigned char *)dest;
+	i = 0;
+	while (i < n)
 	{
-		return (1);
+		pdest[i] = psrc[i];
+		i++;
 	}
+	pdest[i] = '\0';
 	return (0);
 }
-
-#endif

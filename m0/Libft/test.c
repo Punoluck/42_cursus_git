@@ -6,8 +6,8 @@
 int	main(int argc, char **argv)
 {
 	unsigned char	pdest[20];
-
+	strrchr()
 	printf("%s\n", argv[1]);
-	ft_memcpy(pdest, argv[1], 5 * sizeof(char));
+	memchr(pdest, argv[1], 5 * sizeof(char));
 	printf("%s", pdest);
 }

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.h                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 10:34:47 by stitrago          #+#    #+#             */
-/*   Updated: 2025/08/26 10:36:20 by stitrago         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:29:24 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ISASCII_H
-# define FT_ISASCII_H
+#include "libft.h"
 
-int	ft_isascii(int c)
+size_t	ft_isascii(size_t c)
 {
 	if ((0 <= c) && (c <= 127))
 	{
@@ -21,5 +20,3 @@ int	ft_isascii(int c)
 	}
 	return (0);
 }
-
-#endif
