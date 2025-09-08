@@ -1,13 +1,15 @@
 
-#include "ft_memcpy.h"
+#include "libft.h"
 #include <stdio.h>
-#include <string.h>
 
 int	main(int argc, char **argv)
 {
-	unsigned char	pdest[20];
-	strrchr()
-	printf("%s\n", argv[1]);
-	memchr(pdest, argv[1], 5 * sizeof(char));
-	printf("%s", pdest);
+	unsigned char	ftpdest[3];
+	unsigned char	pdest[3];
+	unsigned char	src[] = "Hello";
+
+	ft_memcpy(ftpdest, src, 5 * sizeof(char));
+	printf("ft: %s\n", ftpdest);
+	memcpy(pdest, src, 5 * sizeof(char));
+	printf("original: %s\n", pdest);
 }
