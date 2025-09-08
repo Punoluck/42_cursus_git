@@ -20,12 +20,15 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	psrc = (const char *)src;
 	pdest = (unsigned char *)dest;
-	i = 0;
-	while (i < n)
+
+	pdest[n] = '\0';
+	i = n-1;
+	while (i > 0)
 	{
-		pdest[i] = psrc[i];
-		i++;
+		pdest[n] = psrc[n];
+		i--;
 	}
-	pdest[i] = '\0';
+	pdest[0] = psrc[0];
+
 	return (0);
 }

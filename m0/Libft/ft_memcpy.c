@@ -11,26 +11,23 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t i;
-	const char *psrc;
+	unsigned char *psrc;
 	unsigned char *pdest;
 
-	if (n > sizeof(dest))
+	if (!dest && !src)
 		return (0);
+	psrc = (unsigned char *)src;
+	pdest = (unsigned char *)dest;
 
-	psrc = (const char *)src;
-	pdest = ( char *)dest;
 	i = 0;
 	while (i < n)
 	{
-		printf("hi");
 		pdest[i] = psrc[i];
 		i++;
 	}
-	pdest[i] = '\0';
-	return (0);
+	return (pdest);
 }

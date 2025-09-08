@@ -1,7 +1,9 @@
 NAME	= libft.a
-HEADER = libft.h
-CC		= gcc
+HEADER	= libft.h
+FT	= ft
+CC	= gcc
 CFLAGS	= -Wall -Wextra -Werror
+AR	= ar rcs
 
 SRC		= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c \
@@ -11,14 +13,18 @@ SRC		= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 OBJ		= ${SRC:.c=.o}
 
 all: ${NAME}
-	echo "\nsuccessfully made\n"
+	@echo "\nsuccessfully made\n"
 
 %.o: %.c ${HEADER}
-	${CC} -c ${CFLAGS} ${SRC}
+	${CC} -c ${CFLAGS} $< -o $@
 
 ${NAME}: ${OBJ}
-	ar rcs ${NAME} ${OBJ}
+	${AR} ${NAME} ${OBJ}
 
+run:
+	@read -p "Enter a file: " FILE; \
+	$(CC) "$$FILE".c -L. -l$(FT) -o "$$FILE"; \
+	./"$$FILE"
 clean:
 	rm -f *.o
 
