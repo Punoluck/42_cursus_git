@@ -11,7 +11,7 @@ SRC		= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 OBJ		= ${SRC:.c=.o}
 
 all: ${NAME}
-	echo "\nsuccessfully make\n"
+	echo "\nsuccessfully made\n"
 
 %.o: %.c ${HEADER}
 	${CC} -c ${CFLAGS} ${SRC}

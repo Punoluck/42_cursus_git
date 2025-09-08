@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	ft_toupper(size_t c)
+int	ft_toupper(int c)
 {
 	if ('a' <= c && c <= 'z')
 	{
