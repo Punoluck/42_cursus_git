@@ -9,6 +9,9 @@
         "initializer_list": "c",
         "ranges": "c",
         "span": "c",
-        "utility": "c"
+        "utility": "c",
+        "sstream": "c",
+        "bit": "c",
+        "set": "c"
     }
 }
