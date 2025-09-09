@@ -23,11 +23,16 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	psrc = (unsigned char *)src;
 	pdest = (unsigned char *)dest;
 
+	if (psrc == pdest)
+		return (pdest);
+
 	i = 0;
 	while (i < n)
 	{
 		pdest[i] = psrc[i];
+		printf("%c", pdest[i]);
 		i++;
 	}
+
 	return (pdest);
 }

@@ -1,12 +1,20 @@
 
 #include "libft.h"
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 
-	unsigned char	src[11] = "helloadsss";
+	unsigned char	s1[30] = "helloadssjaad";
+	unsigned char	s2[30] = "helloadssjaad";
+	int result;
 
-	ft_memmove(src+2, src, 8 * sizeof(char));
-	printf("ft: %s\n", src+2);
+	for (int i = 0; i < 128; i++)
+	{	
+		result = ft_isprint(i);
+		printf("ft: %d\n", result);
+
+		result = isprint(i);
+		printf("ori: %d\n", result);
+	}
+	printf("\n");
 }
