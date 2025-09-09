@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 16:44:09 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/09 21:07:30 by stitrago         ###   ########.fr       */
+/*   Created: 2025/09/09 21:10:32 by stitrago          #+#    #+#             */
+/*   Updated: 2025/09/10 00:00:14 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*sub;
-	size_t	s_len;
-	size_t	i;
 	size_t	j;
+	size_t	cf0;
+	size_t	cf1;
+	char	*ps0;
+	char	*ps1;
 
-	i = -1;
 	j = 0;
-	s_len = ft_strlen(s);
-	if (!s)
-		return (NULL);
-	if (start >= s_len)
-		return (ft_strdup(""));
-	if (len >= s_len)
-		sub = (char *)ft_calloc(sizeof(char), (s_len + 1));
-	else
-		sub = (char *)ft_calloc(sizeof(char), (len + 1));
-	while (s[++i])
+	cf0 = 0;
+    cf1 = 0;
+	ps0 = (char *)s1;
+	while (*ps0)
 	{
-		if (i >= start && j < len)
-			sub[j++] = s[i];
+		ps1 = strchr(ps0, set[j]);
+		cf0 = ps1 - ps0;
+		if (cf0 == 0)
+			break ;
+		cf1 += cf0;
 	}
-	sub[j] = '\0';
-	return (sub);
+    printf("%zu", cf1);
+	return (ps1);
 }
