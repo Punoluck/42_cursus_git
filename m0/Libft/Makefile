@@ -4,6 +4,7 @@ FT	= ft
 CC	= gcc
 CFLAGS	= -Wall -Wextra -Werror
 AR	= ar rcs
+TEST	= test
 
 SRC		= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c \
@@ -21,10 +22,6 @@ all: ${NAME}
 ${NAME}: ${OBJ}
 	${AR} ${NAME} ${OBJ}
 
-run:
-	@read -p "Enter a file: " FILE; \
-	$(CC) "$$FILE".c -L. -l$(FT) -o "$$FILE"; \
-	./"$$FILE"
 clean:
 	rm -f *.o
 
@@ -32,5 +29,14 @@ fclean: clean
 	rm -f ${NAME}
 
 re: fclean all
+
+run:
+	@read -p "Enter a file: " FILE; \
+	${CC} "$$FILE".c -L. -l${FT} -o "$$FILE"; \
+	./"$$FILE"
+
+pro: re
+	${CC} ${TEST}.c -L. -l${FT} -o ${TEST}; \
+	./${TEST}
 
 .PHONY: all clean fclean re
