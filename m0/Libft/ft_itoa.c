@@ -6,24 +6,22 @@
 /*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:52:01 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/10 19:10:52 by stitrago         ###   ########.fr       */
+/*   Updated: 2025/09/11 19:18:43 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*recur(int n, char *str)
+static char	*recur(int i, int n, char *str)
 {
 	if (n < 10)
 	{
-		*str = n;
-		str++;
+		*str++ = n + '0';
 		return (str);
 	}
-	recur(n / 10, str);
-	*str = n % 10;
-	str++;
-	return (str);
+	str = recur(i, n / 10, str);
+	*str = (n % 10) + '0';
+	return (++str);
 }
 
 char	*ft_itoa(int n)
@@ -31,18 +29,27 @@ char	*ft_itoa(int n)
 	char	*str;
 	int		pn;
 	int		len;
+	int		sign;
 
-	pn = n;
+	sign = 0;
+	if (n < 0)
+	{
+		n *= -1;
+		sign = 1;
+	}
 	len = 0;
+	pn = n;
 	while (pn != 0)
 	{
 		pn /= 10;
 		len++;
 	}
-	str = (char *)ft_calloc((size_t)sizeof(char), (size_t)(len + 1));
+	str = (char *)ft_calloc((size_t)sizeof(char), (size_t)(len + sign + 1));
 	if (str == NULL)
 		return (NULL);
+	if (sign == 1)
+		*str++ = '-';
 	str[len] = '\0';
-	recur(n, str);
-	return (str-len);
+	str = recur(0, n, str);
+	return (str - len - sign);
 }

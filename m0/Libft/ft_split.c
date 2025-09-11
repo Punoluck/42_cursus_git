@@ -1,12 +1,21 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 18:32:34 by stitrago          #+#    #+#             */
+/*   Updated: 2025/09/11 18:32:34 by stitrago         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-
-static int	count_words(char const *s, char c)
+static char	**init_result(char const *s, char c)
 {
-	int count;
-	int i;
+	int		count;
+	int		i;
 
 	count = 0;
 	i = 0;
@@ -21,29 +30,29 @@ static int	count_words(char const *s, char c)
 				i++;
 		}
 	}
-	return (count);
+	return ((char **)ft_calloc(sizeof(char *), (count + 1)));
+}
+
+int	passing_sep(const char *s, char c, int i)
+{
+	while (s[i] && s[i] == c)
+		i++;
+	return (i);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int i;
-	int count;
-	int start;
-	char **result;
+	int		i;
+	int		count;
+	int		start;
+	char	**result;
 
-	count = count_words(s, c);
-	result = (char **)ft_calloc(sizeof(char *), (count + 1));
-	if (result == NULL)
-		return (NULL);
-
-	i = 0;
-	while (s[i] && s[i] == c)
-		i++;
+	result = init_result(s, c);
+	i = passing_sep(s, c, 0);
 	start = i;
 	count = 0;
-	while (s[i])
+	while (s[i++])
 	{
-		i++;
 		if ((s[i] == c || !s[i]) && c)
 			result[count++] = ft_substr(s, start, i - start);
 		while (s[i] && s[i] == c)
