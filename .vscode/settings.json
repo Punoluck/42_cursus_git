@@ -13,6 +13,9 @@
         "sstream": "c",
         "bit": "c",
         "set": "c",
-        "random": "c"
+        "random": "c",
+        "functional": "c",
+        "chrono": "c",
+        "algorithm": "c"
     }
 }
