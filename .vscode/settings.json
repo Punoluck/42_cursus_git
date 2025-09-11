@@ -12,6 +12,7 @@
         "utility": "c",
         "sstream": "c",
         "bit": "c",
-        "set": "c"
+        "set": "c",
+        "random": "c"
     }
 }
