@@ -1,34 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 16:44:09 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/10 19:09:13 by stitrago         ###   ########.fr       */
+/*   Created: 2025/09/10 17:52:01 by stitrago          #+#    #+#             */
+/*   Updated: 2025/09/10 19:10:52 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+static char	*recur(int n, char *str)
 {
-	char	*sub;
-	size_t	s_len;
-	size_t	sub_len;
+	if (n < 10)
+	{
+		*str = n;
+		str++;
+		return (str);
+	}
+	recur(n / 10, str);
+	*str = n % 10;
+	str++;
+	return (str);
+}
 
-	if (!s)
+char	*ft_itoa(int n)
+{
+	char	*str;
+	int		pn;
+	int		len;
+
+	pn = n;
+	len = 0;
+	while (pn != 0)
+	{
+		pn /= 10;
+		len++;
+	}
+	str = (char *)ft_calloc((size_t)sizeof(char), (size_t)(len + 1));
+	if (str == NULL)
 		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-		return (ft_strdup(""));
-	sub_len = s_len - start;
-	if (sub_len > len)
-		sub_len = len;
-	sub = (char *)ft_calloc(sizeof(char), (sub_len + 1));
-
-	ft_memcpy(sub, s + start, sub_len);
-	sub[sub_len] = '\0';
-	return (sub);
+	str[len] = '\0';
+	recur(n, str);
+	return (str-len);
 }

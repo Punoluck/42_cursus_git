@@ -6,7 +6,7 @@
 /*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 13:48:43 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/09 21:12:28 by stitrago         ###   ########.fr       */
+/*   Updated: 2025/09/10 17:49:33 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,6 @@ void	*ft_calloc(size_t n, size_t size);
 char    *ft_substr(char const *s, unsigned int start, size_t len);
 char    *ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
+char    **ft_split(char const *s, char c);
+char    *ft_itoa(int n);
 #endif

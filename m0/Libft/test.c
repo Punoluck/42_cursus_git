@@ -3,10 +3,9 @@
 
 int	main(int argc, char **argv)
 {
-	char str[20] = "oHoHoHHellasdasoHoH";
-	char set[20] = "oH";
-	int i = 0;
+	char str[30] = "1sd23 4ds56 78ds9 1fsd11";
+	char set[20] = " ";
+	char **result;
 
-	printf("%s\n", ft_strtrim("   xxxtripouille   xxx", " x"));
-
+	printf("%s", ft_itoa(123));
 }
