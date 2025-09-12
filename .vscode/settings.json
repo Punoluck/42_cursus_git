@@ -16,6 +16,7 @@
         "random": "c",
         "functional": "c",
         "chrono": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "STDIO.H": "cpp"
     }
 }
