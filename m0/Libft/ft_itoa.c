@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-static char	*recur(int i, int n, char *str)
+static char	*recur(long n, char *str)
 {
 	if (n < 10)
 	{
 		*str++ = n + '0';
 		return (str);
 	}
-	str = recur(i, n / 10, str);
+	str = recur(n / 10, str);
 	*str = (n % 10) + '0';
 	return (++str);
 }
@@ -27,29 +27,28 @@ static char	*recur(int i, int n, char *str)
 char	*ft_itoa(int n)
 {
 	char	*str;
-	int		pn;
+	long	pn;
 	int		len;
 	int		sign;
 
-	sign = 0;
-	if (n < 0)
-	{
-		n *= -1;
-		sign = 1;
-	}
 	len = 0;
 	pn = n;
-	while (pn != 0)
-	{
+	if (pn == 0)
+		len = 1;
+	sign = 0;
+	if (pn < 0 && sign++ >= 0)
+		pn = -pn;
+	while ((pn != 0) && len++ >= 0)
 		pn /= 10;
-		len++;
-	}
-	str = (char *)ft_calloc((size_t)sizeof(char), (size_t)(len + sign + 1));
+	str = (char *)ft_calloc(sizeof(char), len + sign + 1);
 	if (str == NULL)
 		return (NULL);
 	if (sign == 1)
 		*str++ = '-';
 	str[len] = '\0';
-	str = recur(0, n, str);
+	pn = n;
+	if (pn < 0)
+		pn = -pn;
+	str = recur(pn, str);
 	return (str - len - sign);
 }
