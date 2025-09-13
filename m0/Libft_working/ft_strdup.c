@@ -18,6 +18,8 @@ char	*ft_strdup(const char *src)
 	size_t	size;
 	size_t	i;
 
+	if (!src)
+		return (NULL);
 	size = ft_strlen(src);
 	duplicate = ft_calloc(sizeof(char), size + 1);
 	if (duplicate == NULL)

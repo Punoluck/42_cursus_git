@@ -12,17 +12,26 @@
 
 #include "libft.h"
 
+int	passing_sep(const char *s, char c, size_t i)
+{
+	while (s[i] && s[i] == c)
+		i++;
+	return (i);
+}
+
 static char	**init_result(char const *s, char c)
 {
-	int		count;
 	int		i;
+	int		count;
 
+	if (s == NULL)
+		return ((char **)ft_calloc(sizeof(char *), (0 + 1)));
+	if (c == 0)
+		return ((char **)ft_calloc(sizeof(char *), (1 + 1)));
+	i = -1;
 	count = 0;
-	i = 0;
-	while (s[i])
+	while (s[++i])
 	{
-		while (s[i] && s[i] == c)
-			i++;
 		if (s[i] && s[i] != c)
 		{
 			count++;
@@ -33,13 +42,6 @@ static char	**init_result(char const *s, char c)
 	return ((char **)ft_calloc(sizeof(char *), (count + 1)));
 }
 
-int	passing_sep(const char *s, char c, int i)
-{
-	while (s[i] && s[i] == c)
-		i++;
-	return (i);
-}
-
 char	**ft_split(char const *s, char c)
 {
 	int		i;
@@ -48,21 +50,23 @@ char	**ft_split(char const *s, char c)
 	char	**result;
 
 	result = init_result(s, c);
+	if (result == NULL)
+		return (NULL);
+	count = 0;
+	if (c == 0)
+		result[count++] = ft_substr(s, 0, ft_strlen(s));
 	i = passing_sep(s, c, 0);
 	start = i;
-	count = 0;
-	while (s[i++])
+	while (s[i] && c != 0)
 	{
-		if ((s[i] == c || !s[i]) && c)
-			result[count++] = ft_substr(s, start, i - start);
-		while (s[i] && s[i] == c)
-			start = ++i;
-		if (!s[i])
+		if (s[i] && s[i] == c)
 		{
-			if (!c)
-				result[count++] = ft_substr(s, start, i - start);
-			break ;
+			result[count++] = ft_substr(s, start, i - start);
+			while (s[i] && s[i] == c)
+				start = ++i;
 		}
+		else
+			i++;
 	}
 	result[count] = NULL;
 	return (result);

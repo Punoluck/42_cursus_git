@@ -32,12 +32,12 @@ fclean: clean
 
 re: fclean all
 
-run:
+run: all
 	read -p "Enter a file: " FILE; \
 	${CC} "$$FILE".c -L. -l${FT} -o "$$FILE"; \
 	./"$$FILE"
 
-pro: re
+pro: all
 	${CC} ${TEST}.c -L. -l${FT} -o ${TEST}; \
 	./${TEST}
 

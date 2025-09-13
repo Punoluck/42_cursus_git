@@ -14,6 +14,8 @@
 
 char	*ft_strchr(const char *str, int c)
 {
+	if (!str)
+		return (NULL);
 	while (*str)
 	{
 		if (*str == (char)c)
@@ -22,5 +24,5 @@ char	*ft_strchr(const char *str, int c)
 	}
 	if (*str == (char)c)
 		return ((char *)str);
-	return (0);
+	return (NULL);
 }

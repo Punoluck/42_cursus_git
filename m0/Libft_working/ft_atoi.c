@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+static int ispace(char c)
+{
+	if ((9 <= c && c <= 13) || c == 32)
+		return (1);
+	return (0);
+}
+
 int	ft_atoi(const char *str)
 {
 	int	i;
@@ -21,13 +28,15 @@ int	ft_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	result = 0;
-	while ((9 <= str[i] && str[i] <= 13) || str[i] == 32)
+	if (!str)
+		return (0);
+	while (ispace(str[i]))
 		i++;
-	if (sign == 1 && str[i] && (str[i] == '+' || str[i] == '-'))
+	if (str[i] && (str[i] == '+' || str[i] == '-'))
 	{
-		if (str[i] == '-')
-			sign *= -1;
 		i++;
+		if (str[i] == '-')
+			sign = -sign;
 	}
 	while (str[i] && '0' <= str[i] && str[i] <= '9')
 	{
