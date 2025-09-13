@@ -1,4 +1,4 @@
 # Ignore compiled output
 *.o
 .vscode
-libftTester
+/libftTester

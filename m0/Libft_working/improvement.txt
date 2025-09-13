@@ -1,6 +1,0 @@
-crash in all String function (check NULL string) 
-Can't explain header guard and create obj file in Makefile (study MAKEFILE again)
-.PHONY (u never study this now u will)
-not protect invalid fd (check fd == NULL)
-complie lib with main (dont need to ar rcs again just use the .a)
-(always check for everything, that is able to crash,cuz any testcase risking to crash moulinette, wouldn't be testcase)

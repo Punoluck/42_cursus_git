@@ -1,0 +1,87 @@
+man makefile
+make [OPTION]... [TARGET]...
+- help DECIDE which part of a large program need to be RECOMPILED (ex. library)
+- to compile whatever files need to be compiled, based on what files have changed.
+- But when files in interpreted languages change, nothing needs to get recompiled.
+ca
+*(so does after made a libft.a. If I edit some of .c file compiled into libft.a.Do I still need to re compile all .c file again)
+ANS:
+- make is not limited to programs. You can use it to describe any task where some files must be updated automatically from others whenever the others change.
+
+*(But how does rly it do that. And which commands does it use)
+ANS:
+- so first of all, you need to create a file called 
+	Makefile
+	- describes relationships among file in your program
+	- and state the commands for updating each files
+	- executable file is updated from object files
+	- which are in turn made by compiling source files
+	- Once  a suitable makefile exists, each you change some source files, run
+	
+		make
+	
+	- suffices to perform all necessary recompilations
+	- make uses the makefile description and the last-modification times of the files 	- to decide of the files need to be updated
+	- for each of those files, it issues the commands recorded in the makefile 
+	- 	make	commands in the makefile to update 1 or more target names
+	- where name is typically a program
+	- if no -f option is present, make will look for the makefiles
+	- GNUmakefile, makefile and Makefile, in that order
+	- Normally we use makefile or Makefile
+	- (use Makefile for it to be appears prominently near the beginning of a directory)
+	- GNUmakefile is not recommended, only in case it was specifically use to GNU make
+	- and will not be understood by other version of make
+	- If makefile is '-', the standard input is read
+*(what is the standard input)
+ANS:
+input coming from typing
+
+	- make updates a target if it depend on prerequisite files
+	- that have been modified since the target was last modified, or if the target does  not exist
+*(what is prerequisite files)
+ANS:
+pre-required file, it need to be exist or be updated before the target target file (OBJ) can be created or rebuilt
+
+*(what is .PHONY)
+ANS:
+'.' means this dir
+"PHONY" means to ignore these files name
+Because in makefile you just simply create a TARGET (kinda like file but not file) but also make can run a file with the same command as TARGET
+
+make <TARGET>
+
+you simply run the TARGET which stored only a command so by the time you makefile you are simply run a command store in the TARGET
+ex.
+
+clean:
+	rm -rf *.o
+
+if you write
+
+	make clean
+
+on a terminal it just simply run file named clean
+
+So what did PHONY do is to tell make that the TARGET stored within me is a LABEL not a actual file so find the TARGET only in the makefile we are using (or any Makefile that includes it)
+
+.PHONY: clean
+
+
+Now the last thing
+
+%o: %.c ${HEADER}
+        ${CC} -c ${CFLAGS} $< -o $@
+
+%	- wildcard for any suffix that end with this prefix like (test.c is a part of %.c)
+-c 	- is an option for cc and gcc, stands for "compile only" to only compile into an object file (.o) but do not execute yet
+-o 	- is an option for cc and gcc, to give a name to an object file compiled
+$<	- is prerequisite or pre-require is an any source file given (ex below)
+$@	- is an output file (ex below)
+
+in this	case
+
+%o: %.c ${HEADER}
+        ${CC} -c ${CFLAGS} $< -o $@
+
+%o is $<
+%c is $@

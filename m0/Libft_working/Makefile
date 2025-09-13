@@ -18,7 +18,7 @@ OBJ		= ${SRC:.c=.o}
 all: ${NAME}
 	@echo "\nsuccessfully made\n"
 
-%.o: %.c ${HEADER}
+%o: %.c ${HEADER}
 	${CC} -c ${CFLAGS} $< -o $@
 
 ${NAME}: ${OBJ}
