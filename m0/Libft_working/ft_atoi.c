@@ -34,9 +34,9 @@ int	ft_atoi(const char *str)
 		i++;
 	if (str[i] && (str[i] == '+' || str[i] == '-'))
 	{
-		i++;
 		if (str[i] == '-')
 			sign = -sign;
+		i++;
 	}
 	while (str[i] && '0' <= str[i] && str[i] <= '9')
 	{

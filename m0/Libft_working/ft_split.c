@@ -12,61 +12,98 @@
 
 #include "libft.h"
 
-int	passing_sep(const char *s, char c, size_t i)
-{
-	while (s[i] && s[i] == c)
-		i++;
-	return (i);
-}
-
-static char	**init_result(char const *s, char c)
+static char	**init_result(char const *s, char c, int *count)
 {
 	int		i;
-	int		count;
 
 	if (s == NULL)
 		return ((char **)ft_calloc(sizeof(char *), (0 + 1)));
 	if (c == 0)
 		return ((char **)ft_calloc(sizeof(char *), (1 + 1)));
-	i = -1;
-	count = 0;
-	while (s[++i])
+	i = 0;
+	*count = 0;
+	if (s && s[0] && s[0] != c)
+		(*count)++;
+	while (s && s[i])
 	{
-		if (s[i] && s[i] != c)
+		while (s[i] && s[i] == c)
 		{
-			count++;
-			while (s[i] && s[i] != c)
-				i++;
+			i++;
+			if (s[i] && s[i] != c)
+				(*count)++;
 		}
+		if (s[i] && s[i] != c)
+			i++;
 	}
-	return ((char **)ft_calloc(sizeof(char *), (count + 1)));
+	return ((char **)ft_calloc(sizeof(char *), (*count + 1)));
+}
+char	**insert_substr(char **result, char const *s, char c, int *cur_count)
+{
+	int		i;
+	int		start;
+
+	i = 0;
+	while (s && s[i] && c)
+	{
+		start = i;
+		while(s[i] && s[i] != c)
+		{
+			i++;
+			if (s[i] == c || s[i] == '\0')
+			{
+				result[*cur_count]	= ft_substr(s, start, i - start);
+				if (result[*cur_count] == NULL)
+					return (NULL);
+				(*cur_count)++;
+				break ;
+			}
+		}
+		if (!s[i])
+			break ;
+		i++;
+	}
+	return (result);
+}
+
+int	free_result(char **result, int count, int check)
+{
+	if (check == 0)
+		return (0);
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		free(result[i]);
+		i++;
+	}
+	free(result);
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		count;
-	int		start;
 	char	**result;
+	int		count;
+	int		cur_count;
 
-	result = init_result(s, c);
-	if (result == NULL)
-		return (NULL);
 	count = 0;
-	if (c == 0)
-		result[count++] = ft_substr(s, 0, ft_strlen(s));
-	i = passing_sep(s, c, 0);
-	start = i;
-	while (s[i] && c != 0)
+	result = init_result(s, c, &count);
+	if (free_result(result, count, (result == NULL)) == 1)
+		return (NULL);
+	cur_count = 0;
+	if (s && s[0] && c)
 	{
-		if (s[i] && s[i] == c)
-		{
-			result[count++] = ft_substr(s, start, i - start);
-			while (s[i] && s[i] == c)
-				start = ++i;
-		}
-		else
-			i++;
+		result = insert_substr(result, s, c, &cur_count);
+		if (free_result(result, count, (result == NULL)) == 1)
+			return (NULL);
+	}
+	else if (s && s[0] && c == 0)
+	{
+		result[0] = ft_strdup(s);
+		if (free_result(result, count, (result[0] == NULL)) == 1)
+			return (NULL);
+		count++;
 	}
 	result[count] = NULL;
 	return (result);

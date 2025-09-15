@@ -16,6 +16,8 @@ char	*ft_strrchr(const char *str, int c)
 {
 	size_t		len;
 
+	if (str == NULL)
+		return (NULL);
 	len = ft_strlen(str);
 	len++;
 	while (len--)

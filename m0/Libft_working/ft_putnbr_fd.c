@@ -28,6 +28,9 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	long	pn;
 
+	if(fd == -1){
+		return ;
+	}
 	pn = n;
 	if (pn < 0)
 	{
