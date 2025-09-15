@@ -2,14 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+
-	+:+     */
-/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+
-	+#+        */
-/*                                                +#+#+#+#+#+
-	+#+           */
-/*   Created: 2025/09/12 15:20:50 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/12 15:20:50 by stitrago         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/15 13:55:22 by stitrago          #+#    #+#             */
+/*   Updated: 2025/09/15 13:55:22 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +14,7 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	if(fd == -1){
+	if (fd == -1)
 		return ;
-	}
 	write(fd, &c, 1);
 }

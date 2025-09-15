@@ -37,6 +37,7 @@ static char	**init_result(char const *s, char c, int *count)
 	}
 	return ((char **)ft_calloc(sizeof(char *), (*count + 1)));
 }
+
 char	**insert_substr(char **result, char const *s, char c, int *cur_count)
 {
 	int		i;
@@ -46,12 +47,12 @@ char	**insert_substr(char **result, char const *s, char c, int *cur_count)
 	while (s && s[i] && c)
 	{
 		start = i;
-		while(s[i] && s[i] != c)
+		while (s[i] && s[i] != c)
 		{
 			i++;
 			if (s[i] == c || s[i] == '\0')
 			{
-				result[*cur_count]	= ft_substr(s, start, i - start);
+				result[*cur_count] = ft_substr(s, start, i - start);
 				if (result[*cur_count] == NULL)
 					return (NULL);
 				(*cur_count)++;
@@ -67,10 +68,10 @@ char	**insert_substr(char **result, char const *s, char c, int *cur_count)
 
 int	free_result(char **result, int count, int check)
 {
-	if (check == 0)
-		return (0);
 	int	i;
 
+	if (check == 0)
+		return (0);
 	i = 0;
 	while (i < count)
 	{

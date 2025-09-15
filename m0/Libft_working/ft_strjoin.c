@@ -6,7 +6,7 @@
 /*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:45:08 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/11 17:42:43 by stitrago         ###   ########.fr       */
+/*   Updated: 2025/09/15 13:51:53 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 
 	if (!s1 || !s2)
-        return (NULL);
+		return (NULL);
 	dst = (char *)(ft_calloc(sizeof(char), ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (dst == NULL)
 		return (NULL);

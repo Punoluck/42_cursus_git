@@ -2,14 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2025/09/12 15:13:14 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/12 15:13:14 by stitrago         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/15 13:50:04 by stitrago          #+#    #+#             */
+/*   Updated: 2025/09/15 13:50:04 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +16,7 @@ void	*ft_calloc(size_t n, size_t size)
 {
 	size_t	buf;
 	void	*str;
+
 	if (n == 0 || size == 0)
 	{
 		n = 1;

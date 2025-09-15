@@ -6,7 +6,7 @@
 /*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 21:10:32 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/12 15:48:44 by stitrago         ###   ########.fr       */
+/*   Updated: 2025/09/15 13:53:08 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1)
 		return (NULL);
 	if (!set)
-    	return (ft_strdup(s1));
+		return (ft_strdup(s1));
 	start = 0;
 	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
