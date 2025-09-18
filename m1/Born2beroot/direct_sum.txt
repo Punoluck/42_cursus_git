@@ -1,0 +1,72 @@
+Born2beroot
+
+General guidelines
+	
+	- use VirtualBox (or UTM)
+	- submit signature.txt (paste the signature of my machine's 			virtual disk in it)file at the root of repo
+	- no use of snapshots
+
+Mandatory part
+
+	prohibition
+	- no graphical interface
+	- no X.org or any graphics server
+	
+	operating system
+	- recommend Debian (latest stable version)
+	
+	startup program
+	- SELinux must be running at the start up 
+	and its configuration has to be adapted for the project's needs
+	- AppArmor for Debian must be running at the startup too
+	
+	setup
+	- need at least 2 encryted partitions using LVM
+	- SSH service will be running on the mandatory port 4242
+	for security reason must be not be possible to connect using SSH as root
+	- operating the system with UFW firewall and leaving only the port 4242 	open in the virtual machine
+	- determine the appropriate size for each partition				avoid unnecessary disk usage
+	- firewall (UFW) must be active when you lauch your virtual machine
+	- hostname = stitrago42
+	- password policy
+		- expire every 30days
+		- minimum days before the modification = 2days
+		- user receive warning message 7days before the expiration
+		- at least 10 chars long
+		- contain an uppercase, lowercase, number
+		- no 3 same consecutive identical chars
+		- password must not include the name of the user
+		- ?? following rule does not aplly to the root password
+		- root password: at least 7 char that are not part of the 			former password (DANG)
+		- after setting up your configuration files change 				all the passwords of the accounts present on the virtual machine 		also the root account
+	- install and configure sudo following strict rules
+	- ?? in addition to the root user, a user with your login as username 
+	has to be present, this user has to belong to the user42 and sudo groups	- configuration for sudo group
+		- Authentication using sudo has to be  limited to 3 attempts			in the event of an incorrect password
+		- custom a error message when a wrong password 					occurs when using sudo
+		- archived each action using sudo, both input output				save the log file in the var/log/sudo/ folder
+		- enable TTY (security reasons)
+		- the path that can be used by sudo must be restricted
+		ex. /usr/local/sbin : /usr/local/bin : /usr/sbin : /usr/bin :			/sbin : /bin : /snap/bin
+	- monitoring.sh (bash) at server startup display some info 			on all termials every 10 minutes (take a look at wall) 				the banner is optional no error must be visible
+		- architecture operating system and its kernel version
+		- numberof physical processors
+		- number of virtual processors
+		- current available RAM and storage on server 					and its utilization rate as %
+		- date time of the last reboot
+		- whether LVM is active or not
+		- number of active connections
+		- number of users using the server
+		- both IPv4 and MAC(Media Access Control) address
+		- number of commands executed with sudo program (check at ar)
+		
+	
+	defensing
+	- create new account to test SSH service
+	- QA for ex.
+		why this operating system
+		diff between aptitude and apt
+		what is SELinux or AppArmor
+	- create and assign a new user to a group
+	- explain how the monitoring.sh script works					you will also have to interrupt it without modifying it (look at cron)
+
