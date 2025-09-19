@@ -1,0 +1,20 @@
+Day # 1
+- installing VirtualMachine 
+command to use in order to unpack VM package (not sure)
+
+	sudo dpkg -i <package>
+
+dpkg - package manager for Debian
+
+	- main task: build remove manage Debian packages
+
+	- as a CLI is apt and as TUI is aptitude
+
+	- it maintain some usablee info about the package				that info can be divide into 3 states
+	not-installed
+	config-files ()only the configuration files or the postrm sript
+
+
+apt - package manager as a CLI command-line interface (for dev.)
+
+aptitude - is an apt as a TUI terminal user interface (for user)
