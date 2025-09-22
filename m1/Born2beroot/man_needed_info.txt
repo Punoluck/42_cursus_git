@@ -1,0 +1,17 @@
+LVM
+
+Logical Volume Manager, tools to create virtual block device from physical devi-ces.
+
+	VG
+	Volume Group, collection of 1 or more physical device each called PV
+
+	PV
+	Physical Volume
+
+	LV
+	Logical Volume, virtual block device that can be used by the system or 	application. Each block of data in an LV is stored on 1 or more PV in the VG,	(according to algorithms implemented by DM in the kernel)
+	
+	DM
+	Device Mapper
+
+	
