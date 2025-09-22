@@ -8,19 +8,27 @@ General guidelines
 
 Mandatory part
 
+
 	prohibition
+
 	- no graphical interface
 	- no X.org or any graphics server
+
 	
 	operating system
+
 	- recommend Debian (latest stable version)
+
 	
 	startup program
+
 	- SELinux must be running at the start up 
 	and its configuration has to be adapted for the project's needs
 	- AppArmor for Debian must be running at the startup too
+
 	
 	setup
+
 	- need at least 2 encryted partitions using LVM
 	- SSH service will be running on the mandatory port 4242
 	for security reason must be not be possible to connect using SSH as root
@@ -59,9 +67,21 @@ Mandatory part
 		- number of users using the server
 		- both IPv4 and MAC(Media Access Control) address
 		- number of commands executed with sudo program (check at ar)
-		
 	
-	defensing
+	
+	submission
+
+	- signature.txt :
+		how to get it :
+		- at the root of the git repo paste signature of 				the machine's virtual disk there 
+		to get this signature open the default installation folder 			(folder where VMs are saved)) for Linux ~/VirtualBox VMs/	
+		then retrieve signature from the ".vdi" file of the VM 				in ??sha1 format (look for a file start with sha end with .vdi)
+		*beware*	
+		duplicate your VM or use save state to avoid altering VM's 			signature after 1st eva
+		*beware*
+		do not turn in the VM in the git repo, instead the signature.txt		will be compared with the VM's signature (must be identical)
+
+	- no snapshots
 	- create new account to test SSH service
 	- QA for ex.
 		why this operating system
