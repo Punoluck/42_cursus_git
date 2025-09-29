@@ -1,0 +1,48 @@
+stdarg
+
+
+	macro
+
+	macro (short for "macro instruction") is a rule or pattern that specifies how a certain input should be mapped to a replacement output. Applying a macro to an input is known as macro expansion.
+
+
+	va_list
+
+		arg used by all strarg_func
+
+
+	va_start()
+		
+		void va_start(va_list ap, last);
+
+		macro init ap (forcing this func to call first)for subsequent use by va_arg() and va_end
+		
+		arg last - name of the last arg before var arg list (maybe var_list). The address of this arg may be used in the va_start() macro.
+
+
+	va_arg()
+
+		type va_arg(va_list ap, type);
+		
+		(macro) expands to an expressionthat has the type and val of the next arg in the call.
+
+		modifies ap so that the next call returns the next arg.
+
+		arg type - type name specified the type of a pointer to an object. type can be obtain simply by adding 'a' '*' to type
+
+		The first use of va_arg() after va_start() returns the arg after arg last. Successive invocation return the val of the remaining arg.
+
+		If there is no next arg, or if type is not compatible with the type of the actual next arg, random errors will occur (normally).
+
+		??If ap is passed to a func that uses va_arg(ap, type), then the val of ap is undefined after the return of that func.
+
+
+	va_end()
+
+		void va_end(va_list ap);
+
+		Each invocation of both va_start() must matched by va_end() in the same func.
+
+		after the call va_end(ap) the var ap is undefined.
+
+
