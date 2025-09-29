@@ -5,7 +5,9 @@ CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 AR		= ar rcs
 
-SRC		= ft_printf.c ft_putchar_fd.c ft_putstr_fd.c ft_putunbr_fd.c ft_putnbr_fd.c ft_puthex_fd.c
+SRC		= ft_printf.c \
+			ft_putchar_fd.c ft_putstr_fd.c \
+			ft_putnbr_fd.c ft_putunbr_fd.c ft_puthex_fd.c ft_putaddress_fd.c
 OBJ		= ${SRC:.c=.o}
 
 all: ${NAME}

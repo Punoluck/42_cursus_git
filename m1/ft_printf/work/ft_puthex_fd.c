@@ -1,52 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_puthex_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 10:13:29 by stitrago          #+#    #+#             */
+/*   Updated: 2025/09/29 10:13:29 by stitrago         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static void	lowwer_hex(unsigned long long n, int fd)
+static int	lowwer_hex(unsigned int n, int fd, int len)
 {
 	if (n < 16)
 	{
-        if (n > 9)
-            ft_putchar_fd((n-10) + 'a', fd);
-        else
-		    ft_putchar_fd(n + '0', fd);
-		return ;
+		if (n > 9)
+			ft_putchar_fd((n - 10) + 'a', fd);
+		else
+			ft_putchar_fd(n + '0', fd);
+		return (++len);
 	}
-	lowwer_hex(n / 16, fd);
-    if ((n % 16) > 9)
-        ft_putchar_fd(((n % 16)-10) + 'a', fd);
-    else
-	    ft_putchar_fd((n % 16) + '0', fd);
-	return ;
+	len = lowwer_hex(n / 16, fd, len);
+	if ((n % 16) > 9)
+		ft_putchar_fd(((n % 16) - 10) + 'a', fd);
+	else
+		ft_putchar_fd((n % 16) + '0', fd);
+	return (++len);
 }
 
-static void	upper_hex(unsigned long long n, int fd)
+static int	upper_hex(unsigned int n, int fd, int len)
 {
 	if (n < 16)
 	{
-        if (n > 9)
-            ft_putchar_fd((n-10) + 'A', fd);
-        else
-		    ft_putchar_fd(n + '0', fd);
-		return ;
+		if (n > 9)
+			ft_putchar_fd((n - 10) + 'A', fd);
+		else
+			ft_putchar_fd(n + '0', fd);
+		return (++len);
 	}
-	upper_hex(n / 16, fd);
-    if ((n % 16) > 9)
-        ft_putchar_fd(((n % 16)-10) + 'A', fd);
-    else
-	    ft_putchar_fd((n % 16) + '0', fd);
-	return ;
+	len = upper_hex(n / 16, fd, len);
+	if ((n % 16) > 9)
+		ft_putchar_fd(((n % 16) - 10) + 'A', fd);
+	else
+		ft_putchar_fd((n % 16) + '0', fd);
+	return (++len);
 }
 
-void	ft_puthex_fd(unsigned long long n, int fd, char type)
+int	ft_puthex_fd(unsigned int n, int fd, char type)
 {
 	if (fd == -1)
-		return ;
+		return (0);
 	if (type == 'x')
-		lowwer_hex(n, fd);
+		return (lowwer_hex(n, fd, 0));
 	else if (type == 'X')
-		upper_hex(n, fd);
-	else if (type == 'p')
-	{
-		ft_putstr_fd("0x", fd);
-		lowwer_hex(n, fd);
-	}
+		return (upper_hex(n, fd, 0));
+
+	return (0);
 }

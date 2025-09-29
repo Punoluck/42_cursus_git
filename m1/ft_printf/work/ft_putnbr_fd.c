@@ -1,30 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 10:13:23 by stitrago          #+#    #+#             */
+/*   Updated: 2025/09/29 10:13:23 by stitrago         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static void	recur(int n, int fd)
+static int	recur(int n, int fd, int len)
 {
 	if (n < 10)
 	{
 		ft_putchar_fd(n + '0', fd);
-		return ;
+		return (++len);
 	}
-	recur(n / 10, fd);
+	len = recur(n / 10, fd, len);
 	ft_putchar_fd((n % 10) + '0', fd);
-	return ;
+	return (++len);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
+	unsigned int	len;
+
+	len = 0;
 	if (fd == -1)
-		return;
+		return (0);
 	if (n == -2147483648)
 	{
 		ft_putstr_fd("-2147483648", fd);
-		return;
+		return (11);
 	}
 	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
 		n = -n;
+		len++;
 	}
-	recur(n, fd);
+	len += recur(n, fd, 0);
+	return (len);
 }

@@ -1,20 +1,20 @@
 #include "ft_printf.h"
 
-static void	recur(unsigned int n, int fd)
+static int	recur(unsigned int n, int fd, int len)
 {
 	if (n < 10)
 	{
 		ft_putchar_fd(n + '0', fd);
-		return ;
+		return (++len);
 	}
-	recur(n / 10, fd);
+	len = recur(n / 10, fd, len);
 	ft_putchar_fd((n % 10) + '0', fd);
-	return ;
+	return (++len);
 }
 
-void	ft_putunbr_fd(unsigned int n, int fd)
+int	ft_putunbr_fd(unsigned int n, int fd)
 {
 	if (fd == -1)
-		return ;
-	recur(n, fd);
+		return (0);
+	return (recur(n, fd, 0));
 }
