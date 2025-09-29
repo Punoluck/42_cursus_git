@@ -1,20 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/12 15:34:36 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/12 15:34:36 by stitrago         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
+	int i;
+
 	if (!s || fd == -1)
 		return ;
-	write(fd, s, ft_strlen(s));
+	i = 0;
+	while (s[i])
+		ft_putchar_fd(s[i++], fd);
 }

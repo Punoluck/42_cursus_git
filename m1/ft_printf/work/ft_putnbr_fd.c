@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/12 16:11:57 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/12 16:11:57 by stitrago         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "ft_printf.h"
 
-#include "libftprintf.h"
-
-static void	recur(long n, int fd)
+static void	recur(int n, int fd)
 {
 	if (n < 10)
 	{
@@ -26,15 +14,17 @@ static void	recur(long n, int fd)
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long	pn;
-
 	if (fd == -1)
-		return ;
-	pn = n;
-	if (pn < 0)
+		return;
+	if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return;
+	}
+	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		pn = -pn;
+		n = -n;
 	}
-	recur(pn, fd);
+	recur(n, fd);
 }
