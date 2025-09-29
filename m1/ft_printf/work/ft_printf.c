@@ -2,19 +2,15 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+
-	+:+     */
-/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+
-	+#+        */
-/*                                                +#+#+#+#+#+
-	+#+           */
-/*   Created: 2025/09/29 10:20:30 by stitrago          #+#    #+#             */
-/*   Updated: 2025/09/29 10:20:30 by stitrago         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stitrago <stitrago@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 14:09:03 by stitrago          #+#    #+#             */
+/*   Updated: 2025/09/29 14:09:03 by stitrago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 static int	arg_found(va_list ap, char type)
 {
@@ -28,7 +24,7 @@ static int	arg_found(va_list ap, char type)
 		return (ft_putunbr_fd(va_arg(ap, int), 1));
 	else if (type == 'X' || type == 'x')
 		return (ft_puthex_fd(va_arg(ap, unsigned int), 1, type));
-    else if (type == 'p')
+	else if (type == 'p')
 		return (ft_putaddress_fd(va_arg(ap, unsigned long long), 1));
 	else if (type == '%')
 		return (ft_putchar_fd('%', 1));
@@ -37,12 +33,12 @@ static int	arg_found(va_list ap, char type)
 
 int	ft_printf(const char *fmt, ...)
 {
-	va_list ap;
-	int     len;
+	va_list	ap;
+	int		len;
 
-    len = 0;
+	len = 0;
 	if (!fmt)
-		return (ft_putstr_fd("null", 1));
+		return (ft_putstr_fd("(null)", 1));
 	va_start(ap, fmt);
 	while (*fmt)
 	{

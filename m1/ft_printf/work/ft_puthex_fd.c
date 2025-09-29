@@ -56,6 +56,5 @@ int	ft_puthex_fd(unsigned int n, int fd, char type)
 		return (lowwer_hex(n, fd, 0));
 	else if (type == 'X')
 		return (upper_hex(n, fd, 0));
-
 	return (0);
 }
