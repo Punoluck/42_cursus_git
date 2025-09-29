@@ -23,6 +23,13 @@
         "stdarg.h": "c",
         "ft_printf.h": "c",
         "limits.h": "c",
-        "STDARG.H": "cpp"
+        "STDARG.H": "cpp",
+        "compare": "c",
+        "istream": "c",
+        "ostream": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "variant": "c",
+        "stdlib.h": "c"
     }
 }
